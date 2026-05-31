@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mobile-computing-app",
-    "slug": "mobile-computing-app",
+    "name": "gps-attendance",
+    "slug": "gps-attendance",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
