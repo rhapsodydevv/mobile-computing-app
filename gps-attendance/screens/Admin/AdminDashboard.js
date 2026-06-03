@@ -37,7 +37,7 @@ export default function AdminDashboardScreen({ navigation }) {
     try {
       setLoading(true);
       const user = await UserStorage.getUser();
-      const response = await fetch('https://wibyyjdukskpqxktpllk.supabase.co/api/class-sessions/active', {
+      const response = await fetch('https://mobile-computing-app-production.up.railway.app/api/class-sessions/active', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ export default function AdminDashboardScreen({ navigation }) {
         endTime: endTime.trim(),
       };
 
-      const response = await fetch('http://192.168.0.104:8080/api/class-sessions/new-class', {
+      const response = await fetch('https://mobile-computing-app-production.up.railway.app/api/class-sessions/new-class', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

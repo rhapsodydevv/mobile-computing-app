@@ -28,7 +28,7 @@ export default function AttendanceHistoryScreen() {
         const encodedReg = encodeURIComponent(user.registrationNumber);
         
         const response = await fetch(
-          `https://wibyyjdukskpqxktpllk.supabase.co/api/attendance-history?registrationNumber=${encodedReg}`,
+          `https://mobile-computing-app-production.up.railway.app/api/attendance-history?registrationNumber=${encodedReg}`,
           {
             method: 'GET',
             headers: {

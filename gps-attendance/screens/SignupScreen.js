@@ -34,7 +34,7 @@ export default function SignupScreen({ navigation }) {
 
   const fetchCourses = async () => {
     try {
-      const response = await fetch('https://wibyyjdukskpqxktpllk.supabase.co/api/courses');
+      const response = await fetch('https://mobile-computing-app-production.up.railway.app/api/courses');
       const json = await response.json();
       if (json.status === 1) {
         setCoursesRawData(json.data);
@@ -92,7 +92,7 @@ export default function SignupScreen({ navigation }) {
         semester: selectedSemester
       };
 
-      const response = await fetch('http://192.168.0.104:8080/api/auth/sign-up', {
+        const response = await fetch('https://mobile-computing-app-production.up.railway.app/api/auth/sign-up', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

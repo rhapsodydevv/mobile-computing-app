@@ -33,7 +33,7 @@ export default function LoginScreen({ navigation }) {
       };
 
       // Points data payloads to your production Supabase host instance
-      const response = await fetch('https://wibyyjdukskpqxktpllk.supabase.co/api/auth/login', {
+      const response = await fetch('https://mobile-computing-app-production.up.railway.app/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

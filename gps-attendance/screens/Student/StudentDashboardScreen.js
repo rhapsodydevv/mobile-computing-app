@@ -76,7 +76,7 @@ export default function StudentDashboardScreen({ navigation }) {
 
   const fetchActiveSessions = async (encodedReg, token) => {
     try {
-      const response = await fetch(`https://wibyyjdukskpqxktpllk.supabase.co/api/class-sessions/active?registrationNumber=${encodedReg}`, {
+      const response = await fetch(`https://mobile-computing-app-production.up.railway.app/api/class-sessions/active?registrationNumber=${encodedReg}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -101,7 +101,7 @@ export default function StudentDashboardScreen({ navigation }) {
 
   const fetchAnalyticsData = async (encodedReg, token) => {
     try {
-      const response = await fetch(`https://wibyyjdukskpqxktpllk.supabase.co/api/analytics/student?registrationNumber=${encodedReg}`, {
+      const response = await fetch(`https://mobile-computing-app-production.up.railway.app/api/analytics/student?registrationNumber=${encodedReg}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -141,7 +141,7 @@ export default function StudentDashboardScreen({ navigation }) {
       setIsSubmittingAttendance(sessionId);
       const user = await UserStorage.getUser();
 
-      const response = await fetch("https://wibyyjdukskpqxktpllk.supabase.co/api/attendances/mark", {
+      const response = await fetch("https://mobile-computing-app-production.up.railway.app/api/attendances/mark", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -27,7 +27,7 @@ export default function StudentAnalyticsScreen() {
         const encodedRegNum = encodeURIComponent(user.registrationNumber);
         
         const response = await fetch(
-          `https://wibyyjdukskpqxktpllk.supabase.co/api/analytics/student?registrationNumber=${encodedRegNum}`,
+          `https://mobile-computing-app-production.up.railway.app/api/analytics/student?registrationNumber=${encodedRegNum}`,
           {
             method: 'GET',
             headers: {

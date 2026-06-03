@@ -30,7 +30,7 @@ export default function MyUnitsScreen() {
       setRegNumber(user.registrationNumber);
 
       // 2. URL Encode registration number to safely pass forward-slashes (/)
-      const baseUrl = "https://wibyyjdukskpqxktpllk.supabase.co/api/units/my-units";
+      const baseUrl = "https://mobile-computing-app-production.up.railway.app/api/units/my-units";
       const targetUrl = `${baseUrl}?registrationNumber=${encodeURIComponent(user.registrationNumber)}`;
 
       const response = await fetch(targetUrl, {
