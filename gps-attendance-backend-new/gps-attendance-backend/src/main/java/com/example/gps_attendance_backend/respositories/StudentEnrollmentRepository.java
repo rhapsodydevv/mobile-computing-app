@@ -24,7 +24,7 @@ public interface StudentEnrollmentRepository extends JpaRepository<StudentEnroll
     List<StudentEnrollment> findByStudent_RegistrationNumber(String registrationNumber);
 
     // Fetch only the unit codes for a specific student registration number
-    @Query("SELECT e.unitCode FROM StudentEnrollment e WHERE e.studentRegistrationNumber = :regNumber")
-    List<String> findUnitCodesByStudentRegistrationNumber(@Param("regNumber") String regNumber);
+    @Query("SELECT se.unitCode FROM StudentEnrollment se WHERE TRIM(se.studentRegistrationNumber) = TRIM(:regNo)")
+    List<String> findUnitCodesByStudentRegistrationNumber(@Param("regNo") String registrationNumber);
 
 }

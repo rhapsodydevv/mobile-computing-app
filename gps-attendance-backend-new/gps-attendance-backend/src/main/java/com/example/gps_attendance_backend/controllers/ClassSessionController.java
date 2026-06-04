@@ -5,6 +5,7 @@ import com.example.gps_attendance_backend.models.ClassSession;
 import com.example.gps_attendance_backend.models.Course;
 import com.example.gps_attendance_backend.respositories.ClassSessionRepository;
 import com.example.gps_attendance_backend.respositories.ClassroomRepository;
+import com.example.gps_attendance_backend.respositories.StudentEnrollmentRepository;
 import com.example.gps_attendance_backend.respositories.UnitRepository;
 import com.example.gps_attendance_backend.services.ClassSessionService;
 import lombok.Data;
@@ -32,6 +33,9 @@ public class ClassSessionController {
 
     @Autowired
     private ClassSessionRepository classSessionRepository;
+
+    @Autowired
+    private StudentEnrollmentRepository studentEnrollmentRepository;
 
     @Data
     public static class CreateClassSessionRequest{
@@ -99,7 +103,7 @@ public class ClassSessionController {
 
             if (activeSessions.isEmpty()) {
                 return ResponseEntity.ok(
-                        new ApiResponse<>(0, "No active class sessions found for your enrolled units", Collections.emptyList())
+                        new ApiResponse<>(1, "No active class sessions found for your enrolled units", Collections.emptyList())
                 );
             }
 

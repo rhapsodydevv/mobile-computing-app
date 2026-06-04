@@ -50,10 +50,12 @@ public interface ClassSessionRepository extends JpaRepository<ClassSession, UUID
     List<ClassSession> findByUnitCode(String unitCode);
 
     // Find all active sessions matching the current timestamp and a list of enrolled unit codes
-    List<ClassSession> findByIsActiveTrueAndStartTimeLessThanEqualAndEndTimeGreaterThanEqualAndUnitCodeIn(
-            LocalDateTime startTime,
-            LocalDateTime endTime,
-            List<String> unitCodes
+    @Query("SELECT cs FROM ClassSession cs WHERE cs.isActive = true " +
+            "AND :currentTime BETWEEN cs.startTime AND cs.endTime " +
+            "AND cs.unitCode IN :unitCodes")
+    List<ClassSession> findActiveSessionsForUnitCodes(
+            @Param("currentTime") LocalDateTime currentTime,
+            @Param("unitCodes") List<String> unitCodes
     );
 
 

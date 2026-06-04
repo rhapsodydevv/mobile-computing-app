@@ -86,24 +86,23 @@ public class ClassSessionService {
     }
 
     public List<ClassSession> getActiveSessionsForEnrolledUnits(String registrationNumber) {
-        LocalDateTime now = LocalDateTime.now();
+        if (registrationNumber == null || registrationNumber.trim().isEmpty()) {
+            return Collections.emptyList();
+        }
 
-        // 1. Fetch the list of unit codes the student is enrolled in
+        // 1. Get the unit codes the student is registered for
         List<String> enrolledUnitCodes = studentEnrollmentRepository
-                .findUnitCodesByStudentRegistrationNumber(registrationNumber);
+                .findUnitCodesByStudentRegistrationNumber(registrationNumber.trim());
 
-        // If the student isn't enrolled in any units, return an empty list immediately
+        // If not enrolled in anything, stop here
         if (enrolledUnitCodes.isEmpty()) {
             return Collections.emptyList();
         }
 
-        // 2. Fetch the active sessions matching those specific units
-        return classSessionRepository
-                .findByIsActiveTrueAndStartTimeLessThanEqualAndEndTimeGreaterThanEqualAndUnitCodeIn(
-                        now,
-                        now,
-                        enrolledUnitCodes
-                );
+        // 2. Fetch active sessions within the current time boundary
+        LocalDateTime now = LocalDateTime.now();
+
+        return classSessionRepository.findActiveSessionsForUnitCodes(now, enrolledUnitCodes);
     }
 
 
