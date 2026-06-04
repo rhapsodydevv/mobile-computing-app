@@ -98,8 +98,10 @@ public class ClassSessionController {
             @RequestParam String registrationNumber) {
 
         try {
-            List<ClassSession> activeSessions = classSessionService
-                    .getActiveSessionsForEnrolledUnits(registrationNumber);
+//            List<ClassSession> activeSessions = classSessionService
+//                    .getActiveSessionsForEnrolledUnits(registrationNumber);
+
+            List<ClassSession> activeSessions = classSessionRepository.findByIsActiveTrue();
 
             if (activeSessions.isEmpty()) {
                 return ResponseEntity.ok(
